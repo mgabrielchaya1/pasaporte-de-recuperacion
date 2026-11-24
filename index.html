@@ -62,7 +62,7 @@
                         VOLVER <span class="font-medium text-slate-400 tracking-normal text-xs sm:text-sm">• Pasaporte de Recuperación</span>
                     </h1>
                     <p class="text-[11px] text-slate-400 hidden sm:block">
-                        Generador rápido de tarjetas de seguimiento (1080×1080 PNG) para WhatsApp
+                        Generador rápido de tarjetas de seguimiento (1080×1350 PNG • Ideal WhatsApp)
                     </p>
                 </div>
             </div>
@@ -304,13 +304,13 @@
 
             <!-- COLUMNA DERECHA: VISTA PREVIA EN VIVO DEL CANVAS + BOTONES DE ACCIÓN -->
             <section class="lg:col-span-7 flex flex-col items-center gap-4">
-                <!-- Contenedor de la tarjeta renderizada en Canvas 1080x1080 -->
-                <div class="w-full max-w-[460px] flex flex-col gap-4">
+                <!-- Contenedor de la tarjeta renderizada en Canvas 1080x1350 (4:5) -->
+                <div class="w-full max-w-[420px] flex flex-col gap-4">
                     <div class="relative rounded-2xl p-2 bg-[#131A24]/80 border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
                         <canvas
                             id="passportCanvas"
                             width="1080"
-                            height="1080"
+                            height="1350"
                             class="w-full h-auto block rounded-xl"
                             aria-label="Vista previa de la tarjeta Pasaporte de Recuperación VOLVER"
                         ></canvas>
@@ -500,8 +500,8 @@
              */
             function drawWatermarkV(context, W, H) {
                 context.save();
-                context.translate(W / 2, H / 2 - 20);
-                context.scale(2.85, 2.85);
+                context.translate(W / 2, H / 2 - 10);
+                context.scale(3.4, 3.4);
                 context.translate(-100, -100);
 
                 context.fillStyle = 'rgba(56, 189, 248, 0.032)';
@@ -610,78 +610,78 @@
                 const isNextReward = isRewardCard && state.session === 3;
 
                 context.save();
-                roundRectPath(context, x, y, w, h, 24);
+                roundRectPath(context, x, y, w, h, 26);
 
                 if (isRewardCard) {
                     if (isUnlocked) {
                         const grad = context.createLinearGradient(x, y, x + w, y + h);
-                        grad.addColorStop(0, 'rgba(251, 191, 36, 0.22)');
-                        grad.addColorStop(1, 'rgba(245, 158, 11, 0.08)');
+                        grad.addColorStop(0, 'rgba(251, 191, 36, 0.24)');
+                        grad.addColorStop(1, 'rgba(245, 158, 11, 0.09)');
                         context.fillStyle = grad;
-                        context.shadowColor = 'rgba(251, 191, 36, 0.28)';
+                        context.shadowColor = 'rgba(251, 191, 36, 0.3)';
                         context.shadowBlur = 24;
                         context.fill();
                         context.shadowBlur = 0;
-                        context.strokeStyle = 'rgba(251, 191, 36, 0.85)';
-                        context.lineWidth = 2.5;
+                        context.strokeStyle = 'rgba(251, 191, 36, 0.9)';
+                        context.lineWidth = 3;
                         context.stroke();
                     } else if (isNextReward) {
-                        context.fillStyle = 'rgba(251, 191, 36, 0.1)';
+                        context.fillStyle = 'rgba(251, 191, 36, 0.12)';
                         context.fill();
-                        context.strokeStyle = 'rgba(251, 191, 36, 0.55)';
-                        context.lineWidth = 2;
+                        context.strokeStyle = 'rgba(251, 191, 36, 0.6)';
+                        context.lineWidth = 2.5;
                         context.stroke();
                     } else {
-                        context.fillStyle = 'rgba(251, 191, 36, 0.045)';
+                        context.fillStyle = 'rgba(251, 191, 36, 0.055)';
                         context.fill();
-                        context.strokeStyle = 'rgba(251, 191, 36, 0.24)';
-                        context.lineWidth = 1.6;
+                        context.strokeStyle = 'rgba(251, 191, 36, 0.28)';
+                        context.lineWidth = 2;
                         context.stroke();
                     }
                 } else if (isCompleted) {
                     const grad = context.createLinearGradient(x, y, x + w, y + h);
-                    grad.addColorStop(0, 'rgba(56, 189, 248, 0.18)');
-                    grad.addColorStop(1, 'rgba(14, 165, 233, 0.05)');
+                    grad.addColorStop(0, 'rgba(56, 189, 248, 0.2)');
+                    grad.addColorStop(1, 'rgba(14, 165, 233, 0.06)');
                     context.fillStyle = grad;
-                    context.shadowColor = 'rgba(56, 189, 248, 0.2)';
-                    context.shadowBlur = 18;
+                    context.shadowColor = 'rgba(56, 189, 248, 0.22)';
+                    context.shadowBlur = 20;
                     context.fill();
                     context.shadowBlur = 0;
-                    context.strokeStyle = 'rgba(56, 189, 248, 0.72)';
-                    context.lineWidth = 2.2;
+                    context.strokeStyle = 'rgba(56, 189, 248, 0.78)';
+                    context.lineWidth = 2.8;
                     context.stroke();
                 } else {
-                    context.fillStyle = 'rgba(19, 26, 36, 0.82)';
+                    context.fillStyle = 'rgba(19, 26, 36, 0.86)';
                     context.fill();
-                    context.strokeStyle = 'rgba(255, 255, 255, 0.09)';
-                    context.lineWidth = 1.6;
+                    context.strokeStyle = 'rgba(255, 255, 255, 0.11)';
+                    context.lineWidth = 2;
                     context.stroke();
                 }
 
-                // Círculo indicador superior izquierdo
-                const circleX = x + 52;
-                const circleY = y + 54;
-                const circleR = 26;
+                // Círculo indicador superior izquierdo (más grande y legible)
+                const circleX = x + 60;
+                const circleY = y + 62;
+                const circleR = 34;
 
                 context.beginPath();
                 context.arc(circleX, circleY, circleR, 0, Math.PI * 2);
                 if (isRewardCard) {
-                    context.fillStyle = isUnlocked ? '#FBBF24' : 'rgba(251, 191, 36, 0.16)';
+                    context.fillStyle = isUnlocked ? '#FBBF24' : 'rgba(251, 191, 36, 0.18)';
                     context.fill();
-                    drawStarIcon(context, circleX, circleY, 13, 6, isUnlocked ? '#0B0F15' : '#FBBF24');
+                    drawStarIcon(context, circleX, circleY, 17, 7.8, isUnlocked ? '#0B0F15' : '#FBBF24');
                 } else if (isCompleted) {
                     context.fillStyle = '#38BDF8';
                     context.fill();
-                    drawCheckIcon(context, circleX, circleY, 22, '#0B0F15');
+                    drawCheckIcon(context, circleX, circleY, 28, '#0B0F15');
                 } else {
-                    context.fillStyle = 'rgba(255, 255, 255, 0.06)';
+                    context.fillStyle = 'rgba(255, 255, 255, 0.07)';
                     context.fill();
-                    context.strokeStyle = 'rgba(255, 255, 255, 0.14)';
-                    context.lineWidth = 1.5;
+                    context.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+                    context.lineWidth = 2;
                     context.stroke();
 
-                    context.fillStyle = '#64748B';
-                    context.font = `700 22px ${FONT_FAMILY}`;
+                    context.fillStyle = '#94A3B8';
+                    context.font = `800 28px ${FONT_FAMILY}`;
                     context.textAlign = 'center';
                     context.textBaseline = 'middle';
                     context.fillText(String(sessionNum), circleX, circleY + 1);
@@ -689,85 +689,86 @@
 
                 // Etiqueta de estado superior derecha
                 let statusLabel = 'PENDIENTE';
-                let statusBg = 'rgba(255, 255, 255, 0.05)';
-                let statusColor = '#64748B';
+                let statusBg = 'rgba(255, 255, 255, 0.07)';
+                let statusColor = '#94A3B8';
 
                 if (isRewardCard) {
                     if (isUnlocked) {
                         statusLabel = 'DESBLOQUEADO';
-                        statusBg = 'rgba(251, 191, 36, 0.22)';
+                        statusBg = 'rgba(251, 191, 36, 0.24)';
                         statusColor = '#FDE68A';
                     } else if (isNextReward) {
                         statusLabel = 'PRÓXIMA SESIÓN';
-                        statusBg = 'rgba(251, 191, 36, 0.18)';
+                        statusBg = 'rgba(251, 191, 36, 0.2)';
                         statusColor = '#FBBF24';
                     } else {
                         statusLabel = 'PREMIO';
-                        statusBg = 'rgba(251, 191, 36, 0.12)';
+                        statusBg = 'rgba(251, 191, 36, 0.15)';
                         statusColor = '#FBBF24';
                     }
                 } else if (isCompleted) {
                     statusLabel = 'COMPLETADA';
-                    statusBg = 'rgba(56, 189, 248, 0.18)';
+                    statusBg = 'rgba(56, 189, 248, 0.2)';
                     statusColor = '#7DD3FC';
                 }
 
-                context.font = `700 13px ${FONT_FAMILY}`;
+                context.font = `800 17.5px ${FONT_FAMILY}`;
                 const badgeTextW = context.measureText(statusLabel).width;
-                const badgeW = badgeTextW + 24;
-                const badgeH = 30;
-                const badgeX = x + w - badgeW - 22;
-                const badgeY = y + 39;
+                const badgeW = badgeTextW + 30;
+                const badgeH = 40;
+                const badgeX = x + w - badgeW - 24;
+                const badgeY = y + 42;
 
-                roundRectPath(context, badgeX, badgeY, badgeW, badgeH, 15);
+                roundRectPath(context, badgeX, badgeY, badgeW, badgeH, 20);
                 context.fillStyle = statusBg;
                 context.fill();
 
                 context.fillStyle = statusColor;
                 context.textAlign = 'center';
                 context.textBaseline = 'middle';
-                context.fillText(statusLabel, badgeX + badgeW / 2, badgeY + badgeH / 2 + 0.5);
+                context.fillText(statusLabel, badgeX + badgeW / 2, badgeY + badgeH / 2 + 1);
 
-                // Título de la tarjeta
+                // Título y contenido de la tarjeta
                 context.textAlign = 'left';
                 context.textBaseline = 'alphabetic';
                 if (isRewardCard) {
                     context.fillStyle = isUnlocked ? '#FDE68A' : '#FBBF24';
-                    context.font = `800 22px ${FONT_FAMILY}`;
-                    context.fillText('SESIÓN 4 • PREMIO', x + 28, y + 124);
+                    context.font = `800 30px ${FONT_FAMILY}`;
+                    context.fillText('SESIÓN 4 • PREMIO', x + 28, y + 158);
 
                     const rewardLabel = (state.reward || 'Ozonoterapia de regalo').trim();
-                    context.fillStyle = isUnlocked ? '#FFFFFF' : '#E2E8F0';
-                    context.font = `600 21px ${FONT_FAMILY}`;
+                    context.fillStyle = isUnlocked ? '#FFFFFF' : '#F1F5F9';
+                    context.font = `600 26px ${FONT_FAMILY}`;
                     const rewardLines = wrapLines(context, rewardLabel, w - 56, 2);
                     rewardLines.forEach((line, idx) => {
-                        context.fillText(line, x + 28, y + 156 + idx * 26);
+                        context.fillText(line, x + 28, y + 198 + idx * 33);
                     });
                 } else {
-                    context.fillStyle = isCompleted ? '#FFFFFF' : '#CBD5E1';
-                    context.font = `800 26px ${FONT_FAMILY}`;
-                    context.fillText(`SESIÓN ${sessionNum}`, x + 28, y + 130);
+                    context.fillStyle = isCompleted ? '#FFFFFF' : '#E2E8F0';
+                    context.font = `800 36px ${FONT_FAMILY}`;
+                    context.fillText(`SESIÓN ${sessionNum}`, x + 28, y + 168);
 
                     const subLabels = {
                         1: isCompleted ? 'Inicio del protocolo' : 'Primer paso',
                         2: isCompleted ? 'Avance consolidado' : 'Continuidad activa',
                         3: isCompleted ? 'Camino al beneficio' : 'Consolidación'
                     };
-                    context.fillStyle = isCompleted ? '#94A3B8' : '#64748B';
-                    context.font = `500 18.5px ${FONT_FAMILY}`;
-                    context.fillText(subLabels[sessionNum], x + 28, y + 162);
+                    context.fillStyle = isCompleted ? '#CBD5E1' : '#94A3B8';
+                    context.font = `500 25px ${FONT_FAMILY}`;
+                    context.fillText(subLabels[sessionNum], x + 28, y + 210);
                 }
 
                 context.restore();
             }
 
             // =========================================================================
-            // RENDER PRINCIPAL DEL CANVAS (1080 x 1080)
+            // RENDER PRINCIPAL DEL CANVAS (1080 x 1350 - FORMATO 4:5 IDEAL WHATSAPP)
             // =========================================================================
             function renderCard() {
                 const W = canvas.width;
                 const H = canvas.height;
-                const gridX = 68;
+                const padX = 40;
+                const contentW = W - padX * 2;
 
                 // 1. FONDO OSCURO CLÍNICO
                 const bgGrad = ctx.createLinearGradient(0, 0, W, H);
@@ -778,20 +779,20 @@
                 ctx.fillRect(0, 0, W, H);
 
                 // Luces ambientales sutiles
-                const cyanGlow = ctx.createRadialGradient(180, 120, 10, 180, 120, 480);
+                const cyanGlow = ctx.createRadialGradient(180, 140, 10, 180, 140, 520);
                 cyanGlow.addColorStop(0, 'rgba(56, 189, 248, 0.14)');
                 cyanGlow.addColorStop(1, 'rgba(56, 189, 248, 0)');
                 ctx.fillStyle = cyanGlow;
                 ctx.fillRect(0, 0, W, H);
 
-                const goldGlow = ctx.createRadialGradient(900, 860, 10, 900, 860, 440);
-                goldGlow.addColorStop(0, 'rgba(251, 191, 36, 0.09)');
+                const goldGlow = ctx.createRadialGradient(900, 1040, 10, 900, 1040, 480);
+                goldGlow.addColorStop(0, 'rgba(251, 191, 36, 0.1)');
                 goldGlow.addColorStop(1, 'rgba(251, 191, 36, 0)');
                 ctx.fillStyle = goldGlow;
                 ctx.fillRect(0, 0, W, H);
 
-                // 2. MARCO EXTERIOR SUTIL
-                roundRectPath(ctx, 26, 26, W - 52, H - 52, 36);
+                // 2. MARCO EXTERIOR SUTIL (PEGADO AL BORDE PARA NO PERDER ESPACIO)
+                roundRectPath(ctx, 14, 14, W - 28, H - 28, 32);
                 ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
                 ctx.lineWidth = 2;
                 ctx.stroke();
@@ -800,132 +801,137 @@
                 drawWatermarkV(ctx, W, H);
 
                 // 4. ENCABEZADO VOLVER + BADGE
-                drawLogoV(ctx, gridX, 66, 56);
+                drawLogoV(ctx, padX, 46, 68);
 
                 ctx.textAlign = 'left';
                 ctx.textBaseline = 'alphabetic';
                 ctx.fillStyle = '#FFFFFF';
-                ctx.font = `800 32px ${FONT_FAMILY}`;
-                drawTrackedText(ctx, 'VOLVER', gridX + 70, 98, 6.5, 'left');
+                ctx.font = `800 42px ${FONT_FAMILY}`;
+                drawTrackedText(ctx, 'VOLVER', padX + 82, 86, 7, 'left');
 
                 ctx.fillStyle = '#38BDF8';
-                ctx.font = `600 13.5px ${FONT_FAMILY}`;
-                drawTrackedText(ctx, 'RECUPERACIÓN REAL', gridX + 71, 121, 3.2, 'left');
+                ctx.font = `700 17.5px ${FONT_FAMILY}`;
+                drawTrackedText(ctx, 'RECUPERACIÓN REAL', padX + 84, 114, 3.4, 'left');
 
-                // Pastilla derecha "PASAPORTE DE RECUPERACIÓN"
-                const pillW = 310;
-                const pillH = 44;
-                const pillX = W - gridX - pillW;
-                const pillY = 72;
+                // Pastilla derecha "PASAPORTE DE RECUPERACIÓN" (en 2 líneas legibles o 1 línea grande)
+                const pillW = 356;
+                const pillH = 54;
+                const pillX = W - padX - pillW;
+                const pillY = 53;
 
-                roundRectPath(ctx, pillX, pillY, pillW, pillH, 22);
-                ctx.fillStyle = 'rgba(56, 189, 248, 0.1)';
+                roundRectPath(ctx, pillX, pillY, pillW, pillH, 27);
+                ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
                 ctx.fill();
-                ctx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
-                ctx.lineWidth = 1.5;
+                ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+                ctx.lineWidth = 1.8;
                 ctx.stroke();
 
                 ctx.fillStyle = '#7DD3FC';
-                ctx.font = `700 13.5px ${FONT_FAMILY}`;
+                ctx.font = `800 16.5px ${FONT_FAMILY}`;
                 ctx.textBaseline = 'middle';
-                drawTrackedText(ctx, 'PASAPORTE DE RECUPERACIÓN', pillX + pillW / 2, pillY + pillH / 2 + 0.5, 1.4, 'center');
+                drawTrackedText(ctx, 'PASAPORTE DE RECUPERACIÓN', pillX + pillW / 2, pillY + pillH / 2 + 1, 1.2, 'center');
 
                 // Línea divisoria superior
-                const topDiv = ctx.createLinearGradient(gridX, 152, W - gridX, 152);
-                topDiv.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
-                topDiv.addColorStop(0.5, 'rgba(255, 255, 255, 0.12)');
+                const topDiv = ctx.createLinearGradient(padX, 142, W - padX, 142);
+                topDiv.addColorStop(0, 'rgba(56, 189, 248, 0.4)');
+                topDiv.addColorStop(0.5, 'rgba(255, 255, 255, 0.14)');
                 topDiv.addColorStop(1, 'rgba(255, 255, 255, 0.02)');
                 ctx.strokeStyle = topDiv;
-                ctx.lineWidth = 1.5;
+                ctx.lineWidth = 1.8;
                 ctx.beginPath();
-                ctx.moveTo(gridX, 152);
-                ctx.lineTo(W - gridX, 152);
+                ctx.moveTo(padX, 142);
+                ctx.lineTo(W - padX, 142);
                 ctx.stroke();
 
-                // 5. BLOQUE DE PACIENTE Y ZONA
+                // 5. BLOQUE DE PACIENTE Y ZONA (TIPOGRAFÍA GRANDE)
                 const patientDisplay = state.name.trim() || 'Tu Pasaporte';
                 const zoneDisplay = state.zone.trim() || 'Protocolo de 4 Sesiones';
 
                 ctx.textBaseline = 'alphabetic';
                 ctx.textAlign = 'left';
                 ctx.fillStyle = '#94A3B8';
-                ctx.font = `600 15px ${FONT_FAMILY}`;
-                drawTrackedText(ctx, 'PACIENTE', gridX, 200, 3, 'left');
+                ctx.font = `700 20px ${FONT_FAMILY}`;
+                drawTrackedText(ctx, 'PACIENTE', padX, 188, 3.5, 'left');
 
+                // Ajuste automático de tamaño si el nombre es muy largo
+                let nameFontSize = 68;
+                ctx.font = `800 ${nameFontSize}px ${FONT_FAMILY}`;
+                while (nameFontSize > 42 && ctx.measureText(patientDisplay).width > contentW) {
+                    nameFontSize -= 4;
+                    ctx.font = `800 ${nameFontSize}px ${FONT_FAMILY}`;
+                }
                 ctx.fillStyle = '#FFFFFF';
-                ctx.font = `800 50px ${FONT_FAMILY}`;
-                ctx.fillText(patientDisplay, gridX, 256);
+                ctx.fillText(patientDisplay, padX, 256);
 
                 // Pastilla de zona / foco
-                ctx.font = `600 19px ${FONT_FAMILY}`;
+                ctx.font = `600 25px ${FONT_FAMILY}`;
                 const zoneTextW = ctx.measureText(zoneDisplay).width;
-                const zonePillW = Math.min(W - gridX * 2, zoneTextW + 46);
-                const zonePillH = 42;
-                const zonePillY = 276;
+                const zonePillW = Math.min(contentW, zoneTextW + 58);
+                const zonePillH = 54;
+                const zonePillY = 278;
 
-                roundRectPath(ctx, gridX, zonePillY, zonePillW, zonePillH, 21);
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+                roundRectPath(ctx, padX, zonePillY, zonePillW, zonePillH, 27);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.06)';
                 ctx.fill();
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-                ctx.lineWidth = 1.2;
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.13)';
+                ctx.lineWidth = 1.5;
                 ctx.stroke();
 
                 // Punto cian dentro de la pastilla de zona
                 ctx.fillStyle = '#38BDF8';
                 ctx.beginPath();
-                ctx.arc(gridX + 20, zonePillY + zonePillH / 2, 4.5, 0, Math.PI * 2);
+                ctx.arc(padX + 24, zonePillY + zonePillH / 2, 6, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.fillStyle = '#CBD5E1';
+                ctx.fillStyle = '#E2E8F0';
                 ctx.textBaseline = 'middle';
-                ctx.fillText(zoneDisplay, gridX + 34, zonePillY + zonePillH / 2 + 1);
+                ctx.fillText(zoneDisplay, padX + 42, zonePillY + zonePillH / 2 + 1);
 
-                // 5B. GRILLA 2x2 DE SESIONES
-                const gap = 24;
-                const cardW = (W - gridX * 2 - gap) / 2;
-                const cardH = 196;
-                const startGridY = 348;
+                // 5B. GRILLA 2x2 DE SESIONES (TARJETAS GRANDES)
+                const gap = 22;
+                const cardW = (contentW - gap) / 2;
+                const cardH = 264;
+                const startGridY = 362;
 
-                drawSessionCard(ctx, gridX, startGridY, cardW, cardH, 1);
-                drawSessionCard(ctx, gridX + cardW + gap, startGridY, cardW, cardH, 2);
-                drawSessionCard(ctx, gridX, startGridY + cardH + gap, cardW, cardH, 3);
-                drawSessionCard(ctx, gridX + cardW + gap, startGridY + cardH + gap, cardW, cardH, 4);
+                drawSessionCard(ctx, padX, startGridY, cardW, cardH, 1);
+                drawSessionCard(ctx, padX + cardW + gap, startGridY, cardW, cardH, 2);
+                drawSessionCard(ctx, padX, startGridY + cardH + gap, cardW, cardH, 3);
+                drawSessionCard(ctx, padX + cardW + gap, startGridY + cardH + gap, cardW, cardH, 4);
 
                 // 6. BARRA DE PROGRESO HORIZONTAL
-                const progY = 788;
-                const barW = W - gridX * 2;
+                const progY = 958;
                 const pct = state.session * 25;
 
                 ctx.textBaseline = 'alphabetic';
                 ctx.textAlign = 'left';
-                ctx.fillStyle = '#CBD5E1';
-                ctx.font = `600 19.5px ${FONT_FAMILY}`;
-                ctx.fillText(`Progreso: ${state.session} de 4 sesiones`, gridX, progY + 16);
+                ctx.fillStyle = '#E2E8F0';
+                ctx.font = `700 26px ${FONT_FAMILY}`;
+                ctx.fillText(`Progreso: ${state.session} de 4 sesiones`, padX, progY);
 
                 ctx.textAlign = 'right';
                 ctx.fillStyle = state.session >= 3 ? '#FBBF24' : '#38BDF8';
-                ctx.font = `800 20.5px ${FONT_FAMILY}`;
-                ctx.fillText(`${pct}%`, W - gridX, progY + 16);
+                ctx.font = `800 28px ${FONT_FAMILY}`;
+                ctx.fillText(`${pct}%`, W - padX, progY);
 
                 // Track de la barra
-                const barY = progY + 30;
-                const barH = 14;
-                roundRectPath(ctx, gridX, barY, barW, barH, 7);
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+                const barY = progY + 18;
+                const barH = 20;
+                roundRectPath(ctx, padX, barY, contentW, barH, 10);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.09)';
                 ctx.fill();
 
                 // Relleno degradado cian -> dorado
-                const fillW = Math.max(24, (barW * pct) / 100);
-                const barGrad = ctx.createLinearGradient(gridX, barY, gridX + barW, barY);
+                const fillW = Math.max(28, (contentW * pct) / 100);
+                const barGrad = ctx.createLinearGradient(padX, barY, padX + contentW, barY);
                 barGrad.addColorStop(0, '#38BDF8');
                 barGrad.addColorStop(0.65, '#38BDF8');
                 barGrad.addColorStop(1, '#FBBF24');
 
                 ctx.save();
-                roundRectPath(ctx, gridX, barY, fillW, barH, 7);
+                roundRectPath(ctx, padX, barY, fillW, barH, 10);
                 ctx.fillStyle = barGrad;
-                ctx.shadowColor = state.session >= 3 ? 'rgba(251, 191, 36, 0.45)' : 'rgba(56, 189, 248, 0.45)';
-                ctx.shadowBlur = 14;
+                ctx.shadowColor = state.session >= 3 ? 'rgba(251, 191, 36, 0.48)' : 'rgba(56, 189, 248, 0.48)';
+                ctx.shadowBlur = 16;
                 ctx.fill();
                 ctx.restore();
 
@@ -937,79 +943,79 @@
                     4: '¡Protocolo completado! Gracias por confiar en VOLVER.'
                 };
                 const bannerText = bannerMessages[state.session];
-                const bannerY = 852;
-                const bannerH = 80;
+                const bannerY = 1024;
+                const bannerH = 118;
                 const isGoldBanner = state.session >= 3;
 
                 ctx.save();
-                roundRectPath(ctx, gridX, bannerY, barW, bannerH, 18);
-                ctx.fillStyle = isGoldBanner ? 'rgba(251, 191, 36, 0.1)' : 'rgba(56, 189, 248, 0.09)';
+                roundRectPath(ctx, padX, bannerY, contentW, bannerH, 22);
+                ctx.fillStyle = isGoldBanner ? 'rgba(251, 191, 36, 0.12)' : 'rgba(56, 189, 248, 0.11)';
                 ctx.fill();
-                ctx.strokeStyle = isGoldBanner ? 'rgba(251, 191, 36, 0.35)' : 'rgba(56, 189, 248, 0.28)';
-                ctx.lineWidth = 1.8;
+                ctx.strokeStyle = isGoldBanner ? 'rgba(251, 191, 36, 0.4)' : 'rgba(56, 189, 248, 0.34)';
+                ctx.lineWidth = 2;
                 ctx.stroke();
 
                 // Barra de acento vertical izquierda dentro del banner
-                roundRectPath(ctx, gridX + 14, bannerY + 16, 6, bannerH - 32, 3);
+                roundRectPath(ctx, padX + 18, bannerY + 22, 8, bannerH - 44, 4);
                 ctx.fillStyle = isGoldBanner ? '#FBBF24' : '#38BDF8';
                 ctx.fill();
 
-                // Texto con salto de línea automático
+                // Texto grande con salto de línea automático
                 ctx.fillStyle = '#F8FAFC';
-                ctx.font = `600 20.5px ${FONT_FAMILY}`;
+                ctx.font = `600 28px ${FONT_FAMILY}`;
                 ctx.textAlign = 'left';
                 ctx.textBaseline = 'middle';
-                const bLines = wrapLines(ctx, bannerText, barW - 72, 2);
-                const lineH = 27;
+                const bLines = wrapLines(ctx, bannerText, contentW - 76, 2);
+                const lineH = 36;
                 const totalTextH = (bLines.length - 1) * lineH;
                 const startTextY = bannerY + bannerH / 2 - totalTextH / 2;
 
                 bLines.forEach((line, idx) => {
-                    ctx.fillText(line, gridX + 38, startTextY + idx * lineH);
+                    ctx.fillText(line, padX + 44, startTextY + idx * lineH);
                 });
                 ctx.restore();
 
                 // 8. PIE DE TARJETA ENFOCADO EN EL PACIENTE
-                const footerDivGrad = ctx.createLinearGradient(W / 2 - 220, 950, W / 2 + 220, 950);
+                const footerDivGrad = ctx.createLinearGradient(W / 2 - 260, 1170, W / 2 + 260, 1170);
                 footerDivGrad.addColorStop(0, 'rgba(56, 189, 248, 0)');
-                footerDivGrad.addColorStop(0.5, 'rgba(56, 189, 248, 0.4)');
+                footerDivGrad.addColorStop(0.5, 'rgba(56, 189, 248, 0.45)');
                 footerDivGrad.addColorStop(1, 'rgba(56, 189, 248, 0)');
                 ctx.strokeStyle = footerDivGrad;
-                ctx.lineWidth = 1.4;
+                ctx.lineWidth = 1.6;
                 ctx.beginPath();
-                ctx.moveTo(W / 2 - 220, 950);
-                ctx.lineTo(W / 2 + 220, 950);
+                ctx.moveTo(W / 2 - 260, 1170);
+                ctx.lineTo(W / 2 + 260, 1170);
                 ctx.stroke();
 
                 const sloganRaw = (state.footerSlogan || DEFAULT_SLOGAN).trim();
                 ctx.save();
-                ctx.font = `500 19.5px ${FONT_FAMILY}`;
+                ctx.font = `500 26px ${FONT_FAMILY}`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
 
-                const sloganLines = wrapLines(ctx, sloganRaw, W - 210, 2);
+                const sloganLines = wrapLines(ctx, sloganRaw, contentW - 80, 2);
                 const isTwoLines = sloganLines.length > 1;
-                const sloganStartY = isTwoLines ? 973 : 982;
-                const sloganLineH = 24;
+                const sloganStartY = isTwoLines ? 1210 : 1226;
+                const sloganLineH = 34;
 
                 if (!isTwoLines) {
                     const textW = ctx.measureText(sloganLines[0]).width;
-                    const dotOffset = textW / 2 + 18;
-                    ctx.fillStyle = 'rgba(56, 189, 248, 0.75)';
+                    const dotOffset = textW / 2 + 22;
+                    ctx.fillStyle = 'rgba(56, 189, 248, 0.8)';
                     ctx.beginPath();
-                    ctx.arc(W / 2 - dotOffset, sloganStartY, 3, 0, Math.PI * 2);
-                    ctx.arc(W / 2 + dotOffset, sloganStartY, 3, 0, Math.PI * 2);
+                    ctx.arc(W / 2 - dotOffset, sloganStartY, 4, 0, Math.PI * 2);
+                    ctx.arc(W / 2 + dotOffset, sloganStartY, 4, 0, Math.PI * 2);
                     ctx.fill();
                 }
 
-                ctx.fillStyle = '#E2E8F0';
+                ctx.fillStyle = '#F1F5F9';
                 sloganLines.forEach((line, idx) => {
                     ctx.fillText(line, W / 2, sloganStartY + idx * sloganLineH);
                 });
 
-                ctx.fillStyle = '#64748B';
-                ctx.font = `600 11.5px ${FONT_FAMILY}`;
-                drawTrackedText(ctx, 'GABRIEL CHAYA   •   VOLVER', W / 2, 1024, 2.6, 'center');
+                ctx.fillStyle = '#94A3B8';
+                ctx.font = `700 16px ${FONT_FAMILY}`;
+                drawTrackedText(ctx, 'GABRIEL CHAYA   •   VOLVER', W / 2, 1296, 3.2, 'center');
                 ctx.restore();
             }
 
